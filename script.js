@@ -2,15 +2,17 @@ let showError = document.getElementById("Error");
 showError.style.visibility = "hidden";
 let searchText = document.getElementById("searchInput");
 let searchBtn = document.getElementById("searchBtn");
-let currencyList = [];
 
-function getCoinID(id,current_price){
+function getCoinID(id){
     $.ajax({
         url: `https://api.coingecko.com/api/v3/coins/${id}`,
         type: "GET",
-        data: {id, current_price},
+        data: {
+            id
+        },
         success: function(result){
             console.log(result);
+            console.log("eur = "+result.market_data.current_price.eur);
             showError.style.visibility = "hidden";
         },
         error: function(error){
@@ -26,7 +28,7 @@ function getCoinCurrency(){
 }
 
 $("#searchBtn").click(function(e){
-    getCoinID(searchText.value, "czk");
+    getCoinID(searchText.value);
 })
 
 
