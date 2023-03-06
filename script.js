@@ -44,7 +44,6 @@ $( document ).ready(() => {
         $.ajax({
             url: `https://api.coingecko.com/api/v3/coins/list?include_platform=false`,
             type: "GET",
-            data:{},
             success: function(result){
                 for(let i = 0; i < result.length; i++){
                     list.push(result[i].id);
@@ -63,6 +62,5 @@ $( document ).ready(() => {
     })
 
 });
-
 
 
