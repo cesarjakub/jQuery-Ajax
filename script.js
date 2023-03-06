@@ -32,7 +32,6 @@ $( document ).ready(() => {
                 let eur = result.market_data.current_price.eur;
                 let usd = result.market_data.current_price.usd;
                 $("tbody").prepend(cards(result.image.thumb, result.name, czk, eur, usd));
-                $("#Eroor").css("visibility","hidden");
                 $(".table").css("visibility","visible");
             },
             error: function(error){
@@ -48,7 +47,7 @@ $( document ).ready(() => {
             data:{},
             success: function(result){
                 for(let i = 0; i < result.length; i++){
-                    list.push(result[i].name);
+                    list.push(result[i].id);
                 }
                 console.log(list);
             },
