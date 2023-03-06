@@ -43,6 +43,24 @@ $( document ).ready(() => {
         });
     }
 
+    function coinList(){
+        $.ajax({
+            url: ``,
+            type: "GET",
+            data:{
+
+            },
+            success: function(result){
+                
+                $("#Eroor").css("visibility","hidden");
+            },
+            error: function(error){
+                $("#Error").css("visibility","visible");
+                
+            }
+        });
+    }
+
     $("#searchBtn").click(function(e){
         let val = $("#searchInput").val();
         getCoinID(val);
