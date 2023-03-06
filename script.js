@@ -1,8 +1,12 @@
 $( document ).ready(() => {
     $("#Error").css("visibility","hidden");
     $(".table").css("visibility","hidden");
+    $(".refreshPrice").css("visibility","hidden");
     $("#ErrorBtn").click(() =>{
         document.location.reload();
+    });
+    $("#refreshBtn").click(() =>{
+        console.log("refres prices");
     });
     let list = [];
     coinList();
@@ -33,6 +37,8 @@ $( document ).ready(() => {
                 let usd = result.market_data.current_price.usd;
                 $("tbody").prepend(cards(result.image.thumb, result.name, czk, eur, usd));
                 $(".table").css("visibility","visible");
+                $(".refreshPrice").css("visibility","visible");
+                $("#Error").css("visibility","hidden");
             },
             error: function(error){
                 $("#Error").css("visibility","visible");
