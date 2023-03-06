@@ -4,6 +4,8 @@ $( document ).ready(() => {
     $("#ErrorBtn").click(() =>{
         document.location.reload();
     });
+    let list = [];
+    coinList();
 
     function cards(img, title, czk, usd, eur){
         let text = `
@@ -35,8 +37,24 @@ $( document ).ready(() => {
             },
             error: function(error){
                 $("#Error").css("visibility","visible");
-                
             } 
+        });
+    }
+
+    function coinList(){
+        $.ajax({
+            url: `https://api.coingecko.com/api/v3/coins/list?include_platform=false`,
+            type: "GET",
+            data:{},
+            success: function(result){
+                for(let i = 0; i < result.length; i++){
+                    list.push(result[i].name);
+                }
+                console.log(list);
+            },
+            error: function(error){
+                $("#Error").css("visibility","visible");
+            }
         });
     }
 
