@@ -37,22 +37,6 @@
             />
             Crypto Currency</a
           >
-          <form class="d-flex" role="search">
-            <input
-              class="form-control me-2"
-              id="searchInput"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button
-              class="btn btn-outline-success"
-              id="searchBtn"
-              type="button"
-            >
-              Search
-            </button>
-          </form>
         </div>
       </nav>
     </header>
@@ -68,10 +52,15 @@
             Reload
           </button>
         </div>
-        <div class="refreshPrice">
-            <button type="button" class="btn btn-primary" id="refreshBtn">
-                Reload Prices
-              </button>
+        <div class="coun d-flex justify-content-between">
+            <div class="refreshPrice">
+                <button type="button" class="btn btn-primary" id="refreshBtn">
+                    Reload Prices
+                </button>
+            </div>
+            <div class="refresCount">
+                <h3 class="count">Refresh: 10s</h3>
+            </div>
         </div>
         <div class="cards">
           <div class="dataTable">
@@ -83,7 +72,7 @@
                   <th scope="col">CZK</th>
                   <th scope="col">USD</th>
                   <th scope="col">EUR</th>
-                  <th scope="col">Last Price Update</th>
+                  <th scope="col">refresh price</th>
                 </tr>
               </thead>
               <tbody></tbody>
