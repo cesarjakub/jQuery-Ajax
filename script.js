@@ -8,10 +8,8 @@ $( document ).ready(() => {
     $("#refreshBtn").click(() =>{
         console.log("refres prices");
     });
-    let list = [];
-    coinList();
 
-    function cards(img, title, czk, usd, eur){
+    function cards(img, title, czk, usd, eur, time){
         let text = `
         <tr>
         <th scope="row"><img src="${img}" alt="coin"></th>
@@ -19,6 +17,7 @@ $( document ).ready(() => {
         <td>${czk}kč</td>
         <td>${usd}$</td>
         <td>${eur}€</td>
+        <td>${time}</td>
         </tr>`;
         return text;
     }
@@ -35,7 +34,7 @@ $( document ).ready(() => {
                 let czk = result.market_data.current_price.czk;
                 let eur = result.market_data.current_price.eur;
                 let usd = result.market_data.current_price.usd;
-                $("tbody").prepend(cards(result.image.thumb, result.name, czk, eur, usd));
+                $("tbody").prepend(cards(result.image.thumb, result.name, czk, eur, usd, ));
                 $(".table").css("visibility","visible");
                 $(".refreshPrice").css("visibility","visible");
                 $("#Error").css("visibility","hidden");
@@ -46,21 +45,18 @@ $( document ).ready(() => {
         });
     }
 
-    function coinList(){
-        $.ajax({
-            url: `https://api.coingecko.com/api/v3/coins/list?include_platform=false`,
-            type: "GET",
-            success: function(result){
-                for(let i = 0; i < result.length; i++){
-                    list.push(result[i].id);
-                }
-                console.log(list);
-            },
-            error: function(error){
-                $("#Error").css("visibility","visible");
-            }
-        });
+    function topTenTable(){
+        getCoinID("bitcoin");
+        getCoinID("ethereum");
+        getCoinID("tether");
+        getCoinID("cardano");
+        getCoinID("dogecoin");
+        getCoinID("solana");
+        getCoinID("spacevikings");
+        getCoinID("stellar");
+        getCoinID("fantom");
     }
+    topTenTable();
 
     $("#searchBtn").click(function(e){
         let val = $("#searchInput").val();
